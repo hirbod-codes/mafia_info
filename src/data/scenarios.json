@@ -6,22 +6,34 @@
         ],
         "playersCount": 8,
         "roles": {
-            "گادفادر": [
-                "Good",
-                "Good Plus"
-            ],
-            "لیدی": [
-                "Good",
-                "Good Plus"
-            ],
-            "دکتر": [
-                "Good",
-                "Good Plus"
-            ],
-            "آهنگر": [
-                "Good",
-                "Good Plus"
-            ]
+            "گادفادر": {
+                "picture": "GodFather",
+                "description": [
+                    "Good",
+                    "Good Plus"
+                ]
+            },
+            "لیدی": {
+                "picture": "",
+                "description": [
+                    "Good",
+                    "Good Plus"
+                ]
+            },
+            "دکتر": {
+                "picture": "",
+                "description": [
+                    "Good",
+                    "Good Plus"
+                ]
+            },
+            "آهنگر": {
+                "picture": "",
+                "description": [
+                    "Good",
+                    "Good Plus"
+                ]
+            }
         }
     }
 ]

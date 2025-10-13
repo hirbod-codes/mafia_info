@@ -11,6 +11,7 @@ import Menu from './components/Menu'
 import AboutUs from './pages/AboutUs'
 import Scenarios from './pages/Scenarios'
 import Ahangar from './pages/scenarios/Ahangar'
+import { AppContext } from './context'
 
 const transition: Transition = {
     duration: 0.5,
@@ -21,7 +22,7 @@ function App() {
     const [page, setPage] = useState<number>(0)
     const [menuOpen, setMenuOpen] = useState<boolean>(false)
 
-    const dir = document.documentElement.attributes.getNamedItem('dir')?.value
+    const dir = document.documentElement.attributes.getNamedItem('dir')?.value ?? 'ltr'
 
     console.log('App', `page: ${page}`)
 
@@ -55,102 +56,104 @@ function App() {
     }
 
     return (
-        <div className="flex flex-col h-screen w-screen">
-            <div className="w-full flex flex-row justify-start bg-primary items-center p-2">
-                <MenuIcon className='cursor-pointer stroke-primary-foreground fill-primary-foreground' fontSize={30} onClick={() => { if (!menuOpen) setMenuOpen(true) }} />
-                <div className="flex-1"></div>
-                {page > 1 &&
-                    (dir === 'rtl'
-                        ? <RightArrowIcon className='cursor-pointer stroke-primary-foreground fill-primary-foreground' fontSize={30} onClick={() => setPage(1)} />
-                        : <LeftArrowIcon className='cursor-pointer stroke-primary-foreground fill-primary-foreground' fontSize={30} onClick={() => setPage(1)} />
-                    )
-                }
-                {theme === 'dark' && <SunIcon className='cursor-pointer stroke-primary-foreground fill-primary-foreground' fontSize={30} onClick={() => changeTheme('light')} />}
-                {theme === 'light' && <MoonIcon className='cursor-pointer stroke-primary-foreground fill-primary-foreground' fontSize={30} onClick={() => changeTheme('dark')} />}
+        <AppContext.Provider value={{ theme, direction: dir }}>
+            <div className="flex flex-col h-screen w-screen">
+                <div className="w-full flex flex-row justify-start bg-primary items-center p-2">
+                    <MenuIcon className='cursor-pointer stroke-primary-foreground fill-primary-foreground' fontSize={30} onClick={() => { if (!menuOpen) setMenuOpen(true) }} />
+                    <div className="flex-1"></div>
+                    {page > 1 &&
+                        (dir === 'rtl'
+                            ? <RightArrowIcon className='cursor-pointer stroke-primary-foreground fill-primary-foreground' fontSize={30} onClick={() => setPage(1)} />
+                            : <LeftArrowIcon className='cursor-pointer stroke-primary-foreground fill-primary-foreground' fontSize={30} onClick={() => setPage(1)} />
+                        )
+                    }
+                    {theme === 'dark' && <SunIcon className='cursor-pointer stroke-primary-foreground fill-primary-foreground' fontSize={30} onClick={() => changeTheme('light')} />}
+                    {theme === 'light' && <MoonIcon className='cursor-pointer stroke-primary-foreground fill-primary-foreground' fontSize={30} onClick={() => changeTheme('dark')} />}
+                </div>
+
+                <div className="w-full relative">
+                    <AnimatePresence mode='sync'>
+
+                        {page === 0 &&
+                            <motion.div
+                                className='top-0 left-0 absolute h-full w-full'
+                                custom={dir}
+                                variants={{
+                                    initial: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' }),
+                                    animate: (custom) => (custom === 'ltr' ? { left: page === 0 ? '0%' : '-100%' } : { right: page === 0 ? '0%' : '-100%' }),
+                                    exit: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' })
+                                }}
+                                initial={'initial'}
+                                animate={'animate'}
+                                exit={'exit'}
+                                transition={transition}
+                                key={'page0'}
+                            >
+                                <AboutUs />
+                            </motion.div>
+                        }
+
+                        {page === 1 &&
+                            <motion.div
+                                className="top-0 left-0 absolute h-full w-full"
+                                custom={dir}
+                                variants={{
+                                    initial: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' }),
+                                    animate: (custom) => (custom === 'ltr' ? { left: page === 1 ? '0%' : '-100%' } : { right: page === 1 ? '0%' : '-100%' }),
+                                    exit: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' })
+                                }}
+                                initial={'initial'}
+                                animate={'animate'}
+                                exit={'exit'}
+                                transition={transition}
+                                key={'page1'}
+                            >
+                                <Scenarios setPage={setPage} />
+                            </motion.div>
+                        }
+
+                        {page === 2 &&
+                            <motion.div
+                                className="top-0 left-0 absolute h-full w-full"
+                                custom={dir}
+                                variants={{
+                                    initial: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' }),
+                                    animate: (custom) => (custom === 'ltr' ? { left: page === 2 ? '0%' : '-100%' } : { right: page === 2 ? '0%' : '-100%' }),
+                                    exit: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' })
+                                }}
+                                initial={'initial'}
+                                animate={'animate'}
+                                exit={'exit'}
+                                transition={transition}
+                                key={'page2'}
+                            >
+                                <Ahangar />
+                            </motion.div>
+                        }
+
+                        {menuOpen &&
+                            <motion.div
+                                className="top-0 left-0 absolute h-full w-full"
+                                custom={dir}
+                                variants={{
+                                    initial: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' }),
+                                    animate: (custom) => (custom === 'ltr' ? { left: menuOpen ? '0%' : '-100%' } : { right: menuOpen ? '0%' : '-100%' }),
+                                    exit: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' })
+                                }}
+                                initial={'initial'}
+                                animate={'animate'}
+                                exit={'exit'}
+                                transition={transition}
+                                key={'menu'}
+                            >
+                                <Menu page={page} setPage={setPage} close={() => setMenuOpen(false)} />
+                            </motion.div>
+                        }
+
+                    </AnimatePresence>
+                </div>
             </div>
-
-            <div className="w-full relative">
-                <AnimatePresence mode='sync'>
-
-                    {page === 0 &&
-                        <motion.div
-                            className='top-0 left-0 absolute h-full w-full'
-                            custom={dir}
-                            variants={{
-                                initial: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' }),
-                                animate: (custom) => (custom === 'ltr' ? { left: page === 0 ? '0%' : '-100%' } : { right: page === 0 ? '0%' : '-100%' }),
-                                exit: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' })
-                            }}
-                            initial={'initial'}
-                            animate={'animate'}
-                            exit={'exit'}
-                            transition={transition}
-                            key={'page0'}
-                        >
-                            <AboutUs />
-                        </motion.div>
-                    }
-
-                    {page === 1 &&
-                        <motion.div
-                            className="top-0 left-0 absolute h-full w-full"
-                            custom={dir}
-                            variants={{
-                                initial: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' }),
-                                animate: (custom) => (custom === 'ltr' ? { left: page === 1 ? '0%' : '-100%' } : { right: page === 1 ? '0%' : '-100%' }),
-                                exit: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' })
-                            }}
-                            initial={'initial'}
-                            animate={'animate'}
-                            exit={'exit'}
-                            transition={transition}
-                            key={'page1'}
-                        >
-                            <Scenarios setPage={setPage} />
-                        </motion.div>
-                    }
-
-                    {page === 2 &&
-                        <motion.div
-                            className="top-0 left-0 absolute h-full w-full"
-                            custom={dir}
-                            variants={{
-                                initial: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' }),
-                                animate: (custom) => (custom === 'ltr' ? { left: page === 2 ? '0%' : '-100%' } : { right: page === 2 ? '0%' : '-100%' }),
-                                exit: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' })
-                            }}
-                            initial={'initial'}
-                            animate={'animate'}
-                            exit={'exit'}
-                            transition={transition}
-                            key={'page2'}
-                        >
-                            <Ahangar />
-                        </motion.div>
-                    }
-
-                    {menuOpen &&
-                        <motion.div
-                            className="top-0 left-0 absolute h-full w-full"
-                            custom={dir}
-                            variants={{
-                                initial: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' }),
-                                animate: (custom) => (custom === 'ltr' ? { left: menuOpen ? '0%' : '-100%' } : { right: menuOpen ? '0%' : '-100%' }),
-                                exit: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' })
-                            }}
-                            initial={'initial'}
-                            animate={'animate'}
-                            exit={'exit'}
-                            transition={transition}
-                            key={'menu'}
-                        >
-                            <Menu page={page} setPage={setPage} close={() => setMenuOpen(false)} />
-                        </motion.div>
-                    }
-
-                </AnimatePresence>
-            </div>
-        </div>
+        </AppContext.Provider>
     )
 }
 
