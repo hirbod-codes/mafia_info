@@ -8,7 +8,7 @@ export default function Scenarios({ setPage }: { setPage: React.Dispatch<React.S
     return (
         <div className="flex flex-col gap-3 p-2">
             {scenarios.map((s, i) =>
-                <div key={i} className="text-2xl rounded-2xl bg-primary shadow-2xl p-3 flex flex-row justify-between    " onClick={() => setPage(i + 2)}>
+                <div key={i} className="text-2xl rounded-2xl bg-primary shadow-2xl p-3 flex flex-row justify-between" onClick={() => setPage(i + 2)}>
                     {s.name}
                     {
                         dir === 'rtl'
