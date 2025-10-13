@@ -1,11 +1,27 @@
-{
-    "آهنگر": {
-        "dedscription": [],
+[
+    {
+        "name": "آهنگر",
+        "dedscription": [
+            "Good"
+        ],
+        "playersCount": 8,
         "roles": {
-            "گادفادر": [],
-            "لیدی": [],
-            "دکتر": [],
-            "آهنگر": []
+            "گادفادر": [
+                "Good",
+                "Good Plus"
+            ],
+            "لیدی": [
+                "Good",
+                "Good Plus"
+            ],
+            "دکتر": [
+                "Good",
+                "Good Plus"
+            ],
+            "آهنگر": [
+                "Good",
+                "Good Plus"
+            ]
         }
     }
-}
+]
