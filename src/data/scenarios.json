@@ -9,6 +9,7 @@
         "playersCount": 8,
         "roles": {
             "گادفادر": {
+                "title": "گادفادر",
                 "picture": "GodFather",
                 "description": [
                     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod necessitatibus expedita quia quidem minus ipsam recusandae, iusto nihil ad id aliquid, incidunt repellendus illum quis iste rerum sit asperiores at omnis quam. Rem blanditiis dicta enim, id, ullam totam eveniet inventore repudiandae quas, accusamus explicabo soluta nulla maxime vero illo?",
@@ -17,6 +18,7 @@
                 ]
             },
             "لیدی": {
+                "title": "لیدی",
                 "picture": "Lady",
                 "description": [
                     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod necessitatibus expedita quia quidem minus ipsam recusandae, iusto nihil ad id aliquid, incidunt repellendus illum quis iste rerum sit asperiores at omnis quam. Rem blanditiis dicta enim, id, ullam totam eveniet inventore repudiandae quas, accusamus explicabo soluta nulla maxime vero illo?",
@@ -25,6 +27,7 @@
                 ]
             },
             "دکتر": {
+                "title": "دکتر",
                 "picture": "Doctor",
                 "description": [
                     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod necessitatibus expedita quia quidem minus ipsam recusandae, iusto nihil ad id aliquid, incidunt repellendus illum quis iste rerum sit asperiores at omnis quam. Rem blanditiis dicta enim, id, ullam totam eveniet inventore repudiandae quas, accusamus explicabo soluta nulla maxime vero illo?",
@@ -33,7 +36,17 @@
                 ]
             },
             "آهنگر": {
+                "title": "آهنگر",
                 "picture": "Ahangar",
+                "description": [
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod necessitatibus expedita quia quidem minus ipsam recusandae, iusto nihil ad id aliquid, incidunt repellendus illum quis iste rerum sit asperiores at omnis quam. Rem blanditiis dicta enim, id, ullam totam eveniet inventore repudiandae quas, accusamus explicabo soluta nulla maxime vero illo?",
+                    "Good",
+                    "Good Plus"
+                ]
+            },
+            "شهر ساده": {
+                "title": "ساده",
+                "picture": "Citizen",
                 "description": [
                     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod necessitatibus expedita quia quidem minus ipsam recusandae, iusto nihil ad id aliquid, incidunt repellendus illum quis iste rerum sit asperiores at omnis quam. Rem blanditiis dicta enim, id, ullam totam eveniet inventore repudiandae quas, accusamus explicabo soluta nulla maxime vero illo?",
                     "Good",

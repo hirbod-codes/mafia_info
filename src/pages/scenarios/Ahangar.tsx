@@ -57,6 +57,16 @@ export default function Ahangar() {
     const ahangarLeft = useTransform(ahangarScrollYProgress, [0, 0.5, 1], [c.direction === 'rtl' ? '-50%' : '150%', c.direction === 'rtl' ? '0%' : '50%', c.direction === 'rtl' ? '-50%' : '150%'])
     const ahangarImage = new URL(`/src/assets/pictures/${data.roles['آهنگر'].picture}_${c.theme}.png`, import.meta.url).href
 
+    // Citizen
+    const citizenDescriptionContainer = useRef(null)
+    const { scrollYProgress: citizenScrollYProgress } = useScroll({
+        container: containerRef,
+        target: citizenDescriptionContainer,
+        offset: ["start end", "end start"], // when top enters bottom → bottom leaves top
+    });
+    const citizenLeft = useTransform(citizenScrollYProgress, [0, 0.5, 1], [c.direction === 'rtl' ? '-50%' : '150%', c.direction === 'rtl' ? '0%' : '50%', c.direction === 'rtl' ? '-50%' : '150%'])
+    const citizenImage = new URL(`/src/assets/pictures/${data.roles['شهر ساده'].picture}_${c.theme}.png`, import.meta.url).href
+
     const color: any = colord(document.documentElement.style.getPropertyValue('--background'))
 
     return (
@@ -109,6 +119,10 @@ export default function Ahangar() {
                         />
                     </motion.div>
 
+                    <div className="text-4xl">
+                        {data.roles.گادفادر.title}
+                    </div>
+
                     {data.roles.گادفادر.description.map((d, i) =>
                         <div key={i} className="w-[70%]">
                             {d}
@@ -136,6 +150,10 @@ export default function Ahangar() {
                             className={`absolute w-full h-full left-0 object-cover object-left`}
                         />
                     </motion.div>
+
+                    <div className="text-4xl">
+                        {data.roles.لیدی.title}
+                    </div>
 
                     {data.roles.لیدی.description.map((d, i) =>
                         <div key={i} className="w-[70%]">
@@ -165,6 +183,10 @@ export default function Ahangar() {
                         />
                     </motion.div>
 
+                    <div className="text-4xl">
+                        {data.roles.دکتر.title}
+                    </div>
+
                     {data.roles.دکتر.description.map((d, i) =>
                         <div key={i} className="w-[70%]">
                             {d}
@@ -193,7 +215,43 @@ export default function Ahangar() {
                         />
                     </motion.div>
 
+                    <div className="text-4xl">
+                        {data.roles.آهنگر.title}
+                    </div>
+
                     {data.roles.آهنگر.description.map((d, i) =>
+                        <div key={i} className="w-[70%]">
+                            {d}
+                        </div>
+                    )}
+                </div>
+
+                {/* Citizen */}
+                <div className="my-4 p-4 relative" ref={citizenDescriptionContainer}>
+                    <motion.div
+                        style={{
+                            zIndex: -1,
+                            left: citizenLeft,
+                            clipPath: useTransform(citizenScrollYProgress, [0, 0.4, 1], [
+                                "inset(0 100% 0 0%)", // completely hidden
+                                "inset(0 0% 0 0%)",  // fully revealed
+                                "inset(0 0% 0 100%)",  // fully revealed
+                            ]),
+                        }}
+                        className={`absolute w-[50%] h-full`}
+                    >
+                        <img
+                            src={citizenImage}
+                            alt="god father's dark picture"
+                            className={`absolute w-full h-full left-0 object-cover object-left`}
+                        />
+                    </motion.div>
+
+                    <div className="text-4xl">
+                        {data.roles['شهر ساده'].title}
+                    </div>
+
+                    {data.roles['شهر ساده'].description.map((d, i) =>
                         <div key={i} className="w-[70%]">
                             {d}
                         </div>
