@@ -93,13 +93,13 @@ export default function Ahangar() {
                 <div className="h-[30%]" />
 
                 <div className="my-4 p-4">
-                    {data.dedscription.map((d, i) =>
+                    {data.description.map((d, i) =>
                         <div key={i} className="py-2">{d}</div>
                     )}
                 </div>
 
                 {/* God Father */}
-                <div className="my-4 px-4 py-60 relative" ref={godFatherDescriptionContainer}>
+                <div className="my-60 px-4 relative" ref={godFatherDescriptionContainer}>
                     <motion.div
                         style={{
                             zIndex: -1,
@@ -110,7 +110,7 @@ export default function Ahangar() {
                                 "inset(0 0% 0 100%)",  // fully revealed
                             ]),
                         }}
-                        className={`absolute w-1/2 h-1/2`}
+                        className={`absolute w-1/2 h-full`}
                     >
                         <img
                             src={godFatherImage}
@@ -131,7 +131,7 @@ export default function Ahangar() {
                 </div>
 
                 {/* Lady */}
-                <div className="my-4 p-4 relative" ref={ladyDescriptionContainer}>
+                <div className="my-60 p-4 relative" ref={ladyDescriptionContainer}>
                     <motion.div
                         style={{
                             zIndex: -1,
@@ -163,7 +163,7 @@ export default function Ahangar() {
                 </div>
 
                 {/* Doctor */}
-                <div className="my-4 p-4 relative" ref={doctorDescriptionContainer}>
+                <div className="my-60 p-4 relative" ref={doctorDescriptionContainer}>
                     <motion.div
                         style={{
                             zIndex: -1,
@@ -195,7 +195,7 @@ export default function Ahangar() {
                 </div>
 
                 {/* Ahangar */}
-                <div className="my-4 p-4 relative" ref={ahangarDescriptionContainer}>
+                <div className="my-60 p-4 relative" ref={ahangarDescriptionContainer}>
                     <motion.div
                         style={{
                             zIndex: -1,
@@ -227,7 +227,7 @@ export default function Ahangar() {
                 </div>
 
                 {/* Citizen */}
-                <div className="my-4 p-4 relative" ref={citizenDescriptionContainer}>
+                <div className="my-60 p-4 relative" ref={citizenDescriptionContainer}>
                     <motion.div
                         style={{
                             zIndex: -1,
