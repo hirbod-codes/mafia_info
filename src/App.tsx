@@ -71,7 +71,7 @@ function App() {
                     {theme === 'light' && <MoonIcon className='cursor-pointer stroke-primary-foreground fill-primary-foreground' fontSize={30} onClick={() => changeTheme('dark')} />}
                 </div>
 
-                <div className="w-full relative">
+                <div id='motions-container' className="w-full h-full relative">
                     <AnimatePresence mode='sync'>
 
                         {page === 0 &&
@@ -88,6 +88,7 @@ function App() {
                                 exit={'exit'}
                                 transition={transition}
                                 key={'page0'}
+                                id='page0-motion'
                             >
                                 <AboutUs />
                             </motion.div>
@@ -107,6 +108,7 @@ function App() {
                                 exit={'exit'}
                                 transition={transition}
                                 key={'page1'}
+                                id='page1-motion'
                             >
                                 <Scenarios setPage={setPage} />
                             </motion.div>
@@ -126,6 +128,7 @@ function App() {
                                 exit={'exit'}
                                 transition={transition}
                                 key={'page2'}
+                                id='page2-motion'
                             >
                                 <Ahangar />
                             </motion.div>
@@ -145,6 +148,7 @@ function App() {
                                 exit={'exit'}
                                 transition={transition}
                                 key={'menu'}
+                                id='manu-motion'
                             >
                                 <Menu page={page} setPage={setPage} close={() => setMenuOpen(false)} />
                             </motion.div>

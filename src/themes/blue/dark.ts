@@ -1,10 +1,10 @@
 export default {
     background: "#0f0f10",
-    foreground: "#f5f5f5",
+    foreground: "#dbdbdb",
     card: "#1a1a1c",
-    cardForeground: "#f5f5f5",
+    cardForeground: "#dbdbdb",
     popover: "#1a1a1c",
-    popoverForeground: "#f5f5f5",
+    popoverForeground: "#dbdbdb",
 
     primary: "#9d4edd",              // lighter purple for contrast
     primaryForeground: "#ffffff",
