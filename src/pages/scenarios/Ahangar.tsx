@@ -99,7 +99,7 @@ export default function Ahangar() {
                 </div>
 
                 {/* God Father */}
-                <div className="my-4 p-4 relative" ref={godFatherDescriptionContainer}>
+                <div className="my-4 px-4 py-60 relative" ref={godFatherDescriptionContainer}>
                     <motion.div
                         style={{
                             zIndex: -1,
@@ -110,7 +110,7 @@ export default function Ahangar() {
                                 "inset(0 0% 0 100%)",  // fully revealed
                             ]),
                         }}
-                        className={`absolute w-[50%] h-full`}
+                        className={`absolute w-1/2 h-1/2`}
                     >
                         <img
                             src={godFatherImage}
