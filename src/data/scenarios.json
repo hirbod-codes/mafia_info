@@ -1,8 +1,10 @@
 [
     {
         "name": "آهنگر",
+        "picture": "ahangar_main",
         "dedscription": [
-            "Good"
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ipsum provident eligendi odio officia ipsam assumenda aperiam ipsa, a inventore cupiditate sed ex earum mollitia dolorum iusto incidunt nihil laudantium. Fugiat commodi vel praesentium culpa distinctio cum, dolorum dicta id in sint minima omnis quod esse iste, quisquam consectetur ducimus.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ipsum provident eligendi odio officia ipsam assumenda aperiam ipsa, a inventore cupiditate sed ex earum mollitia dolorum iusto incidunt nihil laudantium. Fugiat commodi vel praesentium culpa distinctio cum, dolorum dicta id in sint minima omnis quod esse iste, quisquam consectetur ducimus."
         ],
         "playersCount": 8,
         "roles": {
