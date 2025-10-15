@@ -1,42 +1,42 @@
 export default {
-  background: "#ffffff",
-  foreground: "#111111",
-  card: "#f9f9fb",
-  cardForeground: "#111111",
-  popover: "#ffffff",
-  popoverForeground: "#111111",
+    background: "210 40% 98%",
+    foreground: "222 47% 11%",
 
-  primary: "#6717ab",              // base purple
-  primaryForeground: "#ffffff",
-  secondary: "#f3e8ff",            // soft purple background
-  secondaryForeground: "#4b006e",
+    card: "0 0% 100%",
+    "card-foreground": "222 47% 11%",
 
-  muted: "#f2f2f5",
-  mutedForeground: "#555555",
-  accent: "#ede9fe",
-  accentForeground: "#3c096c",
+    primary: "200 90% 45%",
+    "primary-foreground": "0 0% 100%",
 
-  destructive: "#e11d48",          // red
-  destructiveForeground: "#ffffff",
+    secondary: "180 50% 90%",
+    "secondary-foreground": "200 90% 20%",
 
-  border: "#e4e4e7",
-  input: "#e4e4e7",
-  ring: "#6717ab",
+    muted: "210 40% 96%",
+    "muted-foreground": "215 20% 40%",
 
-  sidebar: {
-    primary: "#6717ab",
-    primaryForeground: "#ffffff",
-    accent: "#ede9fe",
-    accentForeground: "#3c096c",
-    border: "#e4e4e7",
-    ring: "#6717ab"
-  },
+    accent: "170 60% 45%",
+    "accent-foreground": "0 0% 100%",
 
-  chart: {
-    1: "#6717ab",
-    2: "#9d4edd",
-    3: "#4361ee",
-    4: "#4cc9f0",
-    5: "#4895ef"
-  }
+    destructive: "0 85% 60%",
+    "destructive-foreground": "0 0% 100%",
+
+    popover: "0 0% 100%",
+    "popover-foreground": "222 47% 11%",
+
+    border: "210 20% 85%",
+    input: "210 20% 90%",
+    ring: "200 90% 45%",
+
+    "chart-1": "200 80% 45%",
+    "chart-2": "160 60% 40%",
+    "chart-3": "40 90% 55%",
+    "chart-4": "280 60% 55%",
+    "chart-5": "340 70% 55%",
+
+    sidebar: "200 90% 45%",
+    "sidebar-foreground": "0 0% 100%",
+    "sidebar-accent": "170 60% 45%",
+    "sidebar-accent-foreground": "0 0% 100%",
+    "sidebar-border": "210 20% 85%",
+    "sidebar-ring": "200 90% 45%"
 }
