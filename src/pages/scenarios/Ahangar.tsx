@@ -94,7 +94,7 @@ export default function Ahangar() {
 
                 <div className="my-4 p-4">
                     {data.description.map((d, i) =>
-                        <div key={i} className="py-4 py-2">{d}</div>
+                        <div key={i} className="py-4">{d}</div>
                     )}
                 </div>
 
