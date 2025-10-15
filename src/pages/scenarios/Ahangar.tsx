@@ -15,7 +15,7 @@ export default function Ahangar() {
     const containerRef = useRef(null)
     const { scrollYProgress } = useScroll({ container: containerRef })
     const mainOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.8])
-    const mainHeight = useTransform(scrollYProgress, [0, 0.2], ['30%', '100%'])
+    const mainHeight = useTransform(scrollYProgress, [0, 0.2], ['40%', '100%'])
 
     // GodFather
     const godFatherDescriptionContainer = useRef(null)
@@ -71,9 +71,9 @@ export default function Ahangar() {
 
     return (
         <div id='ahangar' className='w-full h-full overflow-hidden'>
-            <div className="relative border-2 overflow-y-auto overflow-x-hidden h-full" ref={containerRef}>
+            <div className="relative overflow-y-auto overflow-x-hidden h-full" ref={containerRef}>
                 <motion.div
-                    className="relative w-full h-[30%]"
+                    className="relative w-full"
                     style={{
                         zIndex: -1,
                         position: 'fixed',
@@ -84,7 +84,7 @@ export default function Ahangar() {
                     <img
                         src={main}
                         alt="main_picture"
-                        className='absolute object-cover object-center w-full h-full'
+                        className='absolute object-cover object-top w-full h-full'
                     />
 
                     <div className='absolute w-full h-full' style={{ background: `linear-gradient(180deg, rgba(${color.rgba.r}, ${color.rgba.g}, ${color.rgba.b}, 0) 0%, rgba(${color.rgba.r}, ${color.rgba.g}, ${color.rgba.b}, 1) 90%, rgba(${color.rgba.r}, ${color.rgba.g}, ${color.rgba.b}, 1) 100%)` }} />
@@ -94,12 +94,12 @@ export default function Ahangar() {
 
                 <div className="my-4 p-4">
                     {data.description.map((d, i) =>
-                        <div key={i} className="py-2">{d}</div>
+                        <div key={i} className="py-4 py-2">{d}</div>
                     )}
                 </div>
 
                 {/* God Father */}
-                <div className="my-60 px-4 relative" ref={godFatherDescriptionContainer}>
+                <div className="min-h-96 my-60 px-4 relative" ref={godFatherDescriptionContainer}>
                     <motion.div
                         style={{
                             zIndex: -1,
@@ -107,10 +107,10 @@ export default function Ahangar() {
                             clipPath: useTransform(godFatherScrollYProgress, [0, 0.4, 1], [
                                 "inset(0 100% 0 0%)", // completely hidden
                                 "inset(0 0% 0 0%)",  // fully revealed
-                                "inset(0 0% 0 100%)",  // fully revealed
+                                "inset(0 0% 0 100%)",  // completely hidden
                             ]),
                         }}
-                        className={`absolute w-1/2 h-full`}
+                        className={`absolute w-1/2 max-w-[7cm] h-full`}
                     >
                         <img
                             src={godFatherImage}
@@ -124,14 +124,14 @@ export default function Ahangar() {
                     </div>
 
                     {data.roles.گادفادر.description.map((d, i) =>
-                        <div key={i} className="w-[70%]">
+                        <div key={i} className="py-4 w-[70%]">
                             {d}
                         </div>
                     )}
                 </div>
 
                 {/* Lady */}
-                <div className="my-60 p-4 relative" ref={ladyDescriptionContainer}>
+                <div className="min-h-96 my-60 p-4 relative" ref={ladyDescriptionContainer}>
                     <motion.div
                         style={{
                             zIndex: -1,
@@ -139,10 +139,10 @@ export default function Ahangar() {
                             clipPath: useTransform(ladyScrollYProgress, [0, 0.4, 1], [
                                 "inset(0 100% 0 0%)", // completely hidden
                                 "inset(0 0% 0 0%)",  // fully revealed
-                                "inset(0 0% 0 100%)",  // fully revealed
+                                "inset(0 0% 0 100%)",  // completely hidden
                             ]),
                         }}
-                        className={`absolute w-[50%] h-full`}
+                        className={`absolute w-1/2 max-w-[7cm] h-full`}
                     >
                         <img
                             src={ladyImage}
@@ -156,14 +156,14 @@ export default function Ahangar() {
                     </div>
 
                     {data.roles.لیدی.description.map((d, i) =>
-                        <div key={i} className="w-[70%]">
+                        <div key={i} className="py-4 w-[70%]">
                             {d}
                         </div>
                     )}
                 </div>
 
                 {/* Doctor */}
-                <div className="my-60 p-4 relative" ref={doctorDescriptionContainer}>
+                <div className="min-h-96 my-60 p-4 relative" ref={doctorDescriptionContainer}>
                     <motion.div
                         style={{
                             zIndex: -1,
@@ -171,10 +171,10 @@ export default function Ahangar() {
                             clipPath: useTransform(doctorScrollYProgress, [0, 0.4, 1], [
                                 "inset(0 100% 0 0%)", // completely hidden
                                 "inset(0 0% 0 0%)",  // fully revealed
-                                "inset(0 0% 0 100%)",  // fully revealed
+                                "inset(0 0% 0 100%)",  // completely hidden
                             ]),
                         }}
-                        className={`absolute w-[50%] h-full`}
+                        className={`absolute w-1/2 max-w-[7cm] h-full`}
                     >
                         <img
                             src={doctorImage}
@@ -188,14 +188,14 @@ export default function Ahangar() {
                     </div>
 
                     {data.roles.دکتر.description.map((d, i) =>
-                        <div key={i} className="w-[70%]">
+                        <div key={i} className="py-4 w-[70%]">
                             {d}
                         </div>
                     )}
                 </div>
 
                 {/* Ahangar */}
-                <div className="my-60 p-4 relative" ref={ahangarDescriptionContainer}>
+                <div className="min-h-96 my-60 p-4 relative" ref={ahangarDescriptionContainer}>
                     <motion.div
                         style={{
                             zIndex: -1,
@@ -203,10 +203,10 @@ export default function Ahangar() {
                             clipPath: useTransform(ahangarScrollYProgress, [0, 0.4, 1], [
                                 "inset(0 100% 0 0%)", // completely hidden
                                 "inset(0 0% 0 0%)",  // fully revealed
-                                "inset(0 0% 0 100%)",  // fully revealed
+                                "inset(0 0% 0 100%)",  // completely hidden
                             ]),
                         }}
-                        className={`absolute w-[50%] h-full`}
+                        className={`absolute w-1/2 max-w-[7cm] h-full`}
                     >
                         <img
                             src={ahangarImage}
@@ -220,14 +220,14 @@ export default function Ahangar() {
                     </div>
 
                     {data.roles.آهنگر.description.map((d, i) =>
-                        <div key={i} className="w-[70%]">
+                        <div key={i} className="py-4 w-[70%]">
                             {d}
                         </div>
                     )}
                 </div>
 
                 {/* Citizen */}
-                <div className="my-60 p-4 relative" ref={citizenDescriptionContainer}>
+                <div className="min-h-96 my-60 p-4 relative" ref={citizenDescriptionContainer}>
                     <motion.div
                         style={{
                             zIndex: -1,
@@ -235,10 +235,10 @@ export default function Ahangar() {
                             clipPath: useTransform(citizenScrollYProgress, [0, 0.4, 1], [
                                 "inset(0 100% 0 0%)", // completely hidden
                                 "inset(0 0% 0 0%)",  // fully revealed
-                                "inset(0 0% 0 100%)",  // fully revealed
+                                "inset(0 0% 0 100%)",  // completely hidden
                             ]),
                         }}
-                        className={`absolute w-[50%] h-full`}
+                        className={`absolute w-1/2 max-w-[7cm] h-full`}
                     >
                         <img
                             src={citizenImage}
@@ -252,7 +252,7 @@ export default function Ahangar() {
                     </div>
 
                     {data.roles['شهر ساده'].description.map((d, i) =>
-                        <div key={i} className="w-[70%]">
+                        <div key={i} className="py-4 w-[70%]">
                             {d}
                         </div>
                     )}
