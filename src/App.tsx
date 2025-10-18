@@ -10,8 +10,10 @@ import darkTheme from '@/themes/purple/dark'
 import Menu from './components/Menu'
 import AboutUs from './pages/AboutUs'
 import Scenarios from './pages/Scenarios'
-import Ahangar from './pages/scenarios/Ahangar'
+// import Ahangar from './pages/scenarios/Ahangar'
+import Scenario from '@/pages/Scenario'
 import { AppContext } from './context'
+import { scenarios } from './data/scenarios'
 
 const transition: Transition = {
     duration: 0.5,
@@ -90,7 +92,7 @@ function App() {
                                 key={'page0'}
                                 id='page0-motion'
                             >
-                                <AboutUs />
+                                <AboutUs setPage={setPage} />
                             </motion.div>
                         }
 
@@ -114,23 +116,23 @@ function App() {
                             </motion.div>
                         }
 
-                        {page === 2 &&
+                        {page > 1 &&
                             <motion.div
                                 className="top-0 left-0 absolute h-full w-full"
                                 custom={dir}
                                 variants={{
                                     initial: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' }),
-                                    animate: (custom) => (custom === 'ltr' ? { left: page === 2 ? '0%' : '-100%' } : { right: page === 2 ? '0%' : '-100%' }),
+                                    animate: (custom) => (custom === 'ltr' ? { left: page > 1 ? '0%' : '-100%' } : { right: page > 1 ? '0%' : '-100%' }),
                                     exit: (custom) => (custom === 'ltr' ? { left: '-100%' } : { right: '-100%' })
                                 }}
                                 initial={'initial'}
                                 animate={'animate'}
                                 exit={'exit'}
                                 transition={transition}
-                                key={'page2'}
+                                key={'page' + page}
                                 id='page2-motion'
                             >
-                                <Ahangar />
+                                <Scenario scenario={scenarios[page - 2]} />
                             </motion.div>
                         }
 
