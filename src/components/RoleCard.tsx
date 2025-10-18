@@ -31,7 +31,7 @@ export default function RoleCard({ containerRef, role }: { containerRef: RefObje
                 <img
                     src={new URL(`/src/assets/pictures/${role.picture}_${c.theme}.png`, import.meta.url).href}
                     alt="god father's dark picture"
-                    className={`absolute w-full h-full left-0 object-cover object-left`}
+                    className={`absolute w-full h-96 left-0 object-cover object-left`}
                 />
             </motion.div>
 

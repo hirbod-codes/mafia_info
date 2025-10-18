@@ -1,12 +1,15 @@
 import { type Scenario } from '@/data/scenarios'
 import { AppContext } from '@/context'
-import { useContext, useRef } from 'react'
+import { useContext, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { colord } from "colord";
 import RoleCard from '@/components/RoleCard';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/shadcn/ui/select';
 
 export default function Scenario({ scenario }: { scenario: Scenario }) {
     const c = useContext(AppContext)
+
+    const [playersCount, setPlayersCount] = useState<number>(scenario.playersCount[0])
 
     // main
     const containerRef = useRef(null)
@@ -39,6 +42,25 @@ export default function Scenario({ scenario }: { scenario: Scenario }) {
                 </motion.div>
 
                 <div className="h-[30%]" />
+
+                {scenario.playersCount.length > 1 &&
+                    <div className="flex flex-row items-center gap-2 px-4">
+                        <div>انتخاب تعداد بازیکنان:</div>
+
+                        <Select defaultValue={playersCount.toString()} onValueChange={(v) => setPlayersCount(Number(v))}>
+                            <SelectTrigger className="">
+                                <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    {scenario.playersCount.map((v, i) =>
+                                        <SelectItem key={i} value={v.toString()}>{v.toString()}</SelectItem>
+                                    )}
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                }
 
                 <div className="mb-60 p-4">
                     {scenario.descriptions.map((d, i) =>
@@ -77,7 +99,7 @@ export default function Scenario({ scenario }: { scenario: Scenario }) {
                 )}
 
                 {(scenario?.notes ?? []).length > 0 &&
-                    <div className="px-2 mb-6 text-6xl text-green-800 border-b-2 border-green-800">
+                    <div className="px-2 mb-6 mt-60 text-4xl border-b-2">
                         نکات
                     </div>
                 }
@@ -89,7 +111,7 @@ export default function Scenario({ scenario }: { scenario: Scenario }) {
                 )}
 
                 {(scenario?.actsOrder ?? []).length > 0 &&
-                    <div className="px-2 mb-6 text-2xl">
+                    <div className="px-2 mb-6 mt-60 text-4xl border-b-2">
                         ترتیب بیدار شدن نقش ها در بازی
                     </div>
                 }

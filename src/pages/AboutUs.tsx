@@ -12,7 +12,7 @@ export default function AboutUs({ setPage }: { setPage: React.Dispatch<React.Set
 
     return (
         <>
-            <div className="relative w-full">
+            <div className="relative w-full bg-background">
                 <img
                     src={image}
                     alt="main_picture"
