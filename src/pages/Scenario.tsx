@@ -41,9 +41,7 @@ export default function Scenario({ scenario }: { scenario: Scenario }) {
                 <div className="h-[30%]" />
 
                 <div className="mb-60 p-4">
-                    {scenario.descriptions.map((d, i) =>
-                        <div key={i} className="py-4">{d}</div>
-                    )}
+                    {scenario.descriptions.join(',')}
                 </div>
 
                 {Object.keys(scenario?.independentRoles ?? {}).length > 0 &&
