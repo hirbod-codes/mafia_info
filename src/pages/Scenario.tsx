@@ -41,7 +41,9 @@ export default function Scenario({ scenario }: { scenario: Scenario }) {
                 <div className="h-[30%]" />
 
                 <div className="mb-60 p-4">
-                    {scenario.descriptions.join(',')}
+                    {scenario.descriptions.map((d, i) =>
+                        <div key={i} className="py-4">{d}</div>
+                    )}
                 </div>
 
                 {Object.keys(scenario?.independentRoles ?? {}).length > 0 &&
@@ -86,8 +88,8 @@ export default function Scenario({ scenario }: { scenario: Scenario }) {
                     </div>
                 )}
 
-                {(scenario?.notes ?? []).length > 0 &&
-                    <div className="px-2 mb-6 text-6xl text-green-800 border-b-2 border-green-800">
+                {(scenario?.actsOrder ?? []).length > 0 &&
+                    <div className="px-2 mb-6 text-2xl">
                         ترتیب بیدار شدن نقش ها در بازی
                     </div>
                 }

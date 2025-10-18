@@ -9,12 +9,12 @@ export default function Scenarios({ setPage }: { setPage: React.Dispatch<React.S
 
     return (
         <div className="flex flex-col gap-3 p-2">
+            <div className="text-end text-2xl p-2">تعداد بازیکن</div>
             {scenarios.map((s, i) =>
                 <div key={i} className="text-2xl rounded-2xl bg-primary shadow-2xl p-3 flex flex-row justify-between" onClick={() => setPage(i + 2)}>
-                    {s.name}
-                    {s.playersCount.map((c, i) =>
-                        <div key={i}>{c}</div>
-                    )}
+                    <div>{s.name}</div>
+                    <div className="flex-1"></div>
+                    <div>{s.playersCount.join(',')}</div>
                     {
                         c.direction === 'rtl'
                             ? <LeftArrowIcon className='cursor-pointer stroke-primary-foreground fill-primary-foreground' fontSize={30} onClick={() => setPage(1)} />
