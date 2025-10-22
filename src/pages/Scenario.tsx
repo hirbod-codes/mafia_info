@@ -19,6 +19,23 @@ export default function Scenario({ scenario }: { scenario: Scenario }) {
 
     const color: any = colord(document.documentElement.style.getPropertyValue('--background'))
 
+    const descriptions = typeof scenario.descriptions === "function" ? scenario.descriptions(playersCount) : scenario.descriptions
+    const independentRoles = typeof scenario.independentRoles === "function" ? scenario.independentRoles(playersCount) : scenario.independentRoles
+    const mafiaRoles = typeof scenario.mafiaRoles === "function" ? scenario.mafiaRoles(playersCount) : scenario.mafiaRoles
+    const citizenRoles = typeof scenario.citizenRoles === "function" ? scenario.citizenRoles(playersCount) : scenario.citizenRoles
+    const notes = typeof scenario?.notes === "function" ? scenario.notes(playersCount) : (scenario?.notes ?? [])
+    const actsOrder = typeof scenario?.actsOrder === "function" ? scenario.actsOrder(playersCount) : (scenario?.actsOrder ?? [])
+
+    console.log({
+        playersCount,
+        descriptions,
+        independentRoles,
+        mafiaRoles,
+        citizenRoles,
+        notes,
+        actsOrder,
+    })
+
     return (
         <div id='scenario' className='w-full h-full overflow-hidden'>
             <div className="relative overflow-y-auto overflow-x-hidden h-full" ref={containerRef}>
@@ -63,60 +80,60 @@ export default function Scenario({ scenario }: { scenario: Scenario }) {
                 }
 
                 <div className="mb-60 p-4">
-                    {scenario.descriptions.map((d, i) =>
+                    {descriptions.map((d, i) =>
                         <div key={i} className="py-4">{d}</div>
                     )}
                 </div>
 
-                {Object.keys(scenario?.independentRoles ?? {}).length > 0 &&
+                {Object.keys(independentRoles ?? {}).length > 0 &&
                     <div className="px-2 mb-6 text-6xl border-b-2">
-                        {Object.keys(scenario?.independentRoles ?? {}).length > 1 ? "اعضا" : "عضو"} مستقل
+                        {Object.keys(independentRoles ?? {}).length > 1 ? "اعضا" : "عضو"} مستقل
                     </div>
                 }
 
-                {Object.values(scenario?.independentRoles ?? {}).map((r, i) =>
-                    <RoleCard key={i} role={r} containerRef={containerRef} />
+                {Object.values(independentRoles ?? {}).map((r, i) =>
+                    <RoleCard key={i} playersCount={playersCount} role={r} containerRef={containerRef} />
                 )}
 
-                {Object.keys(scenario?.mafiaRoles ?? {}).length > 0 &&
+                {Object.keys(mafiaRoles ?? {}).length > 0 &&
                     <div className="px-2 mb-6 text-6xl text-destructive border-b-2 border-destructive">
-                        {Object.keys(scenario?.mafiaRoles ?? {}).length > 1 ? "اعضای" : "عضو"} مافیا
+                        {Object.keys(mafiaRoles ?? {}).length > 1 ? "اعضای" : "عضو"} مافیا
                     </div>
                 }
 
-                {Object.values(scenario?.mafiaRoles ?? {}).map((r, i) =>
-                    <RoleCard key={i} role={r} containerRef={containerRef} />
+                {Object.values(mafiaRoles ?? {}).map((r, i) =>
+                    <RoleCard key={i} playersCount={playersCount} role={r} containerRef={containerRef} />
                 )}
 
-                {Object.keys(scenario?.citizenRoles ?? {}).length > 0 &&
+                {Object.keys(citizenRoles ?? {}).length > 0 &&
                     <div className="px-2 mb-6 text-6xl text-green-800 border-b-2 border-green-800">
-                        {Object.keys(scenario?.citizenRoles ?? {}).length > 1 ? "اعضای" : "عضو"} شهروند
+                        {Object.keys(citizenRoles ?? {}).length > 1 ? "اعضای" : "عضو"} شهروند
                     </div>
                 }
 
-                {Object.values(scenario?.citizenRoles ?? {}).map((r, i) =>
-                    <RoleCard key={i} role={r} containerRef={containerRef} />
+                {Object.values(citizenRoles ?? {}).map((r, i) =>
+                    <RoleCard key={i} playersCount={playersCount} role={r} containerRef={containerRef} />
                 )}
 
-                {(scenario?.notes ?? []).length > 0 &&
+                {notes.length > 0 &&
                     <div className="px-2 mb-6 mt-60 text-4xl border-b-2">
                         نکات
                     </div>
                 }
 
-                {(scenario?.notes ?? []).map((n, i) =>
+                {notes.map((n, i) =>
                     <div key={i} className="p-2">
                         {n}
                     </div>
                 )}
 
-                {(scenario?.actsOrder ?? []).length > 0 &&
+                {actsOrder.length > 0 &&
                     <div className="px-2 mb-6 mt-60 text-4xl border-b-2">
                         ترتیب بیدار شدن نقش ها در بازی
                     </div>
                 }
 
-                {(scenario?.actsOrder ?? []).map((a, i) =>
+                {actsOrder.map((a, i) =>
                     <div key={i} className="p-2">
                         {a}
                     </div>

@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { AppContext } from "@/context";
 import type { Role } from "@/data/scenarios";
 
-export default function RoleCard({ containerRef, role }: { containerRef: RefObject<null>, role: Role }) {
+export default function RoleCard({ containerRef, playersCount, role }: { containerRef: RefObject<null>, playersCount: number, role: ((playersCount: number) => Role) | Role }) {
     const c = useContext(AppContext)
 
     const descriptionContainer = useRef(null)
@@ -13,6 +13,9 @@ export default function RoleCard({ containerRef, role }: { containerRef: RefObje
         offset: ["start end", "end start"], // when top enters bottom → bottom leaves top
     });
     const left = useTransform(scrollYProgress, [0, 0.5, 1], [c.direction === 'rtl' ? '-50%' : '150%', c.direction === 'rtl' ? '0%' : '50%', c.direction === 'rtl' ? '-50%' : '150%'])
+
+    if (typeof role === "function")
+        role = role(playersCount)
 
     return (
         <div className="min-h-96 mb-60 p-4 relative" ref={descriptionContainer}>
@@ -36,10 +39,10 @@ export default function RoleCard({ containerRef, role }: { containerRef: RefObje
             </motion.div>
 
             <div className="text-4xl">
-                {role.title}
+                {typeof role.title === "function" ? role.title(playersCount) : role.title}
             </div>
 
-            {role.descriptions.map((d, i) =>
+            {(typeof role.descriptions === "function" ? role.descriptions(playersCount) : role.descriptions).map((d, i) =>
                 <div key={i} className="p-2 w-[70%] rounded-2xl bg-background/50 my-2">
                     {d}
                 </div>
